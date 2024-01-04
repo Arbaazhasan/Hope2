@@ -1,0 +1,32 @@
+.exploreMenu {
+    /* border: 2px solid green; */
+    width: 93%;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    overflow: hidden;
+    background-color: white;
+    box-shadow: 0px 0px 8px gray;
+
+
+}
+
+.exploreMenu>a {
+    /* border: 2px solid blue; */
+    height: 12.5%;
+    padding-left: 12%;
+    text-decoration: none;
+    font-size: medium;
+    color: black;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.exploreMenu>a:hover {
+    color: rgb(107, 74, 224);
+    border-left: 8px solid rgb(107, 74, 224);
+    font-weight: bolder;
+}

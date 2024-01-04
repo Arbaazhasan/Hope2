@@ -1,0 +1,108 @@
+.followersListWindwo {
+    /* border: 2px solid black; */
+    width: 95%;
+    height: 86.5vh;
+    min-height: 40em;
+    margin: 15px auto;
+    border-radius: 12px;
+    box-shadow: 0px 0px 8px gray;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+}
+
+.FollowersAndFollowing {
+    /* border: 2px solid green; */
+    display: flex;
+    width: 100%;
+    height: 9%;
+    border-bottom: 4px solid rgb(107, 74, 224);
+
+}
+
+.FollowersAndFollowing>div {
+    /* border: 2px solid red; */
+    width: 50%;
+    height: 100%;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 1em;
+}
+
+.FollowersAndFollowing>div:hover {
+    background-color: rgb(241, 237, 246);
+    color: rgb(107, 74, 224);
+    cursor: pointer;
+}
+
+.userFollowersAndFollowing {
+    /* border: 2px solid black; */
+    height: 92%;
+    width: 100%;
+    overflow: scroll;
+}
+
+.userFollowersAndFollowing::-webkit-scrollbar {
+    display: none;
+}
+
+
+.userFollowerTab {
+    /* border: 2px solid green; */
+    padding: .5em .9em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.userFollowerTab:hover {
+    background-color: rgb(241, 237, 246);
+}
+
+.followerUsername {
+
+    /* border: 2px solid green; */
+    width: 45%;
+}
+
+.followerUsername>a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: medium;
+}
+
+.followerProfileIcon {
+    width: 3em;
+    height: 3em;
+    border-radius: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.followerProfileIcon>img {
+    /* width: 100%; */
+    height: 100%;
+}
+
+.followBtn {
+    color: rgb(107, 74, 224);
+    border: 2px solid rgb(107, 74, 224);
+    border-radius: 8px;
+    padding: 5px 8px;
+    font-size: small;
+    cursor: pointer;
+    font-weight: bold;
+
+}
+
+.followBtn:hover {
+    color: white;
+    background-color: rgb(107, 74, 224);
+}

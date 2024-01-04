@@ -1,0 +1,120 @@
+.commentBox {
+    /* border: 2px solid green; */
+    width: 100%;
+    background-color: rgba(234, 234, 234, 0.563);
+    padding: 8px;
+    border-radius: 12px;
+    box-shadow: 0px 0px 10px rgba(128, 128, 128, 0.685);
+    /* display: flex; */
+    flex-direction: column;
+
+
+}
+
+.allComments {
+    /* border: 2px solid violet; */
+    height: 12em;
+    overflow: scroll;
+    margin-bottom: 12px;
+    padding: 0px 5px;
+}
+
+.allComments::-webkit-scrollbar {
+    display: none;
+}
+
+.comment {
+    /* border: 2px solid black; */
+    font-size: medium;
+    display: flex;
+    background-color: white;
+    padding: 5px 8px;
+    box-shadow: 0px 0px 5px gray;
+    border-radius: 15px;
+    margin: 8px 0px;
+
+}
+
+.comment>div:nth-child(1) {
+    /* border: 2px solid blue; */
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.comment>div>div {
+    /* border: 2px solid green; */
+    width: 2em;
+    height: 2em;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-shadow: 0px 0px 5px gray;
+
+}
+
+.comment>div>div>img {
+    height: 100%;
+}
+
+.comment>div:nth-child(2) {
+    /* border: 2px solid red; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* width: 100%; */
+    padding-left: 10px;
+}
+
+.addComment {
+    /* border: 2px solid black; */
+    width: 100%;
+    height: 2.2em;
+    display: flex;
+    margin-bottom: 5px;
+
+}
+
+.addComment>form {
+    /* border: 2px solid green; */
+    width: 100%;
+    padding: 0px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    border-radius: 1vw;
+    box-shadow: 0px 0px 12px gray;
+
+}
+
+.addComment>form>input {
+    width: 90%;
+    padding: 2px;
+    font-size: medium;
+    border: none;
+    background-color: transparent;
+}
+
+.addComment>form>input:focus {
+    outline: none;
+}
+
+.addComment>form>button {
+    background-color: transparent;
+    border: none;
+    color: rgb(107, 74, 224);
+    width: 5%;
+    font-size: x-large;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.addComment>form>button:hover {
+    color: rgb(70, 35, 197);
+}

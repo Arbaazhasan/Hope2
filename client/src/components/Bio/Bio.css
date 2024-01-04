@@ -1,0 +1,68 @@
+.userInfo {
+    /* border: 2px solid red; */
+    width: 95%;
+    height: 63%;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0px 0px 8px gray;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+}
+
+.userInfo>div:nth-child(1) {
+    /* border: 2px solid green; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.userInfo>div:nth-child(1)>a {
+    text-decoration: none;
+    color: black;
+}
+
+.userInfo>div:nth-child(1)>a:hover {
+    color: rgb(107, 74, 224);
+}
+
+
+.userInfo>div:nth-child(2) {
+    /* border: 2px solid blue; */
+    font-size: medium;
+    display: flex;
+    flex-direction: column;
+    max-height: 90%;
+    justify-content: space-between;
+    gap: 12px;
+    line-height: 25px;
+    color: gray;
+    /* overflow: scroll; */
+}
+
+
+.userInfo>div:nth-child(2)>p {
+    background-color: rgba(238, 238, 238, 0.494);
+    padding: 9.5px;
+    border-radius: 12px
+}
+
+.userInfo>div:nth-child(2)>p>strong {
+    color: black;
+}
+
+.UpateProfileBioInfo {
+    position: fixed;
+    z-index: 10000;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    visibility: hidden;
+}
+
+.UpateProfileBioInfo:target {
+    visibility: visible;
+}

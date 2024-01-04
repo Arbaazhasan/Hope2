@@ -1,0 +1,71 @@
+.postBar {
+    /* border: 2px solid blue; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    width: 95%;
+    margin: 12px auto 0px auto;
+    border-radius: 100vw;
+    background-color: white;
+    overflow: hidden;
+    padding: 7px 5px;
+    box-shadow: 0px 0px 8px gray;
+
+}
+
+.postBar>div {
+    width: 2.3em;
+    height: 2.3em;
+    border-radius: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.postBar>div>img {
+    /* width: 100%; */
+    height: 100%;
+}
+
+.postBar>form {
+    /* border: 2px solid green; */
+    width: 87%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.postBar>form>input:nth-child(1) {
+    width: 70%;
+    background-color: transparent;
+    border: none;
+    font-size: medium;
+}
+
+.postBar>form>input:nth-child(1):focus {
+    outline: none;
+}
+
+.postBar>form>label:hover {
+    color: rgb(107, 74, 224);
+}
+
+.postBar>form>button {
+    width: 20%;
+    height: 2.7em;
+    border-radius: 100vw;
+    background-color: rgb(107, 74, 224);
+    color: white;
+    font-weight: bold;
+    letter-spacing: 2px;
+    border: none;
+    cursor: pointer;
+}
+
+.postBar>form>button:hover {
+    background-color: rgb(115, 90, 204);
+
+}

@@ -1,0 +1,105 @@
+.AaccountSettings {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(241, 237, 246, 0.625);
+
+}
+
+.ChangePassword {
+    /* border: 2px solid black; */
+    width: 50%;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0px 0px 12px gray;
+
+}
+
+.ChangePasswordWidnowClose {
+    /* border: 2px solid blue; */
+    width: 90%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.ChangePasswordWidnowClose>label {
+    width: 2em;
+    height: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: large;
+    font-weight: bold;
+    border-radius: 7px;
+    color: gray;
+}
+
+.ChangePasswordWidnowClose>label:hover {
+    border: 3px solid rgb(107, 74, 224);
+    color: rgb(107, 74, 224);
+}
+
+.ChangePasswordHeading {
+    /* border: 2px solid green; */
+    width: 90%;
+    height: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ChangePassword>form {
+    /* border: 2px solid black; */
+    width: 90%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly
+}
+
+.ChangePassword>form>h3
+{
+    width: 100%;
+}
+
+.ChangePassword>form>input {
+    width: 100%;
+    height: 15%;
+    font-size: medium;
+    padding: 1em;
+    border-radius: 12px;
+    border: none;
+    background-color: rgb(241, 237, 246);
+}
+
+.ChangePassword>form>input:focus
+{
+    outline: none;
+}
+
+.ChangePassword>form>button {
+    background-color: rgb(107, 74, 224);
+    width: 20%;
+    height: 15%;
+    border-radius: 12px;
+    border: none;
+    color: white;
+    font-size: medium;
+}
+
+.ChangePassword>form>button:hover{
+    background-color :white;
+    color : rgb(107, 74, 224);
+    border : 3px solid rgb(107, 74, 224);
+    transition: all .7s;
+    font-weight : bold;
+}

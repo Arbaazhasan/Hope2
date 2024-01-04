@@ -1,0 +1,14 @@
+.ChatApp {
+    height: 100vh;
+    display: flex;
+}
+
+.chatAppLeft {
+    border: 2px solid black;
+    width: 25%
+}
+
+.ChatAppRight {
+    border: 2px solid green;
+    width: 75%;
+}

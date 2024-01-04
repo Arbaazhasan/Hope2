@@ -1,0 +1,36 @@
+.Loading {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: xx-large;
+    background-color: rgba(128, 128, 128, 0.644);
+    position: absolute;
+    z-index: 100;
+    font-weight: bolder;
+}
+
+.Loading>div {
+    /* border: 2px solid green; */
+    width: 10vw;
+    height: 10vw;
+    /* border-bottom: 5px solid green; */
+    border-radius: 100vw;
+    animation: runLoading 1s infinite;
+    margin-bottom: 2vw;
+}
+
+@keyframes runLoading {
+    from {
+        border-top: 2px solid black;
+        transform: rotate(10deg);
+    }
+
+    to {
+        border-left: 5px solid black;
+        transform: rotate(2000deg);
+    }
+
+}

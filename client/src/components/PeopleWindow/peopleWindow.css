@@ -1,0 +1,101 @@
+.mainPeopleWindow {
+    /* border: 2px solid green; */
+    width: 90%;
+    height: 100%;
+    margin: 1em auto;
+    /* overflow: hidden; */
+}
+
+.peopleWindowHeading {
+    /* border: 2px solid red; */
+    width: 95%;
+    height: 5%;
+}
+
+.peopleWindow {
+    /* border: 2px solid blue; */
+    width: 100%;
+    height: 95%;
+    /* display: flex; */
+    /* flex-wrap: wrap; */
+    /* justify-content: space-evenly; */
+    display: grid;
+    grid-template-columns: repeat(3, 10em);
+    grid-template-rows: repeat(3, 14.5em);
+    grid-gap: 0px 20px;
+    overflow: scroll;
+    padding-left: 12px;
+}
+
+.peopleWindow::-webkit-scrollbar {
+    display: none;
+}
+
+.userProfileBox {
+    /* border: 2px solid green; */
+    width: 10em;
+    height: 13em;
+    border-radius: 12px;
+    box-shadow: 0px 0px 8px gray;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 20px;
+}
+
+.userProfileBox:hover {
+    transform: scale(1.1);
+    transition: .5s all;
+}
+
+.userProfileBox>p {
+    font-size: large;
+    font-weight: bold;
+}
+
+.userProfilePicture {
+    /* border: 2px solid peru; */
+    width: 6em;
+    height: 6em;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-shadow: 0px 0px 12px gray;
+}
+
+.userProfilePicture>img {
+    height: 100%;
+
+}
+
+.userProfileBox>div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.70em;
+}
+
+.userProfileBox>div>button {
+    background-color: rgb(107, 74, 224);
+    color: white;
+    padding: .30em .70em;
+    border: none;
+    border-radius: 100vw;
+}
+
+.userProfileBox>div>button:hover {
+    background-color: rgb(74, 42, 192);
+}
+
+.userProfileBox>div:nth-child(3)>button:nth-child(2) {
+    /* border: 2px solid gray; */
+    background-color: gray;
+}
+
+.userProfileBox>div:nth-child(3)>button:nth-child(2):hover {
+    /* border: 2px solid gray; */
+    background-color: red;
+}

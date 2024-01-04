@@ -1,0 +1,169 @@
+/* .postWindows {
+    border: 2px solid red;
+    overflow: scroll;
+    max-height: 90%;
+    margin-top: 19px;
+} */
+
+/* .postWindows::-webkit-scrollbar {
+    display: none;
+} */
+
+.postWindow {
+    /* border: 2px solid red; */
+    width: 95%;
+    overflow: hidden;
+    /* min-height: 25vh; */
+    /* height: 65vh; */
+    /* max-height: 65vh; */
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0px 0px 8px gray;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 24px auto;
+    gap: 12px;
+    padding: 12px 0px 12px 0px;
+}
+
+.postUsername {
+    /* border: 2px solid blue; */
+    display: flex;
+    width: 92%;
+    align-items: center;
+
+    gap: 12px;
+}
+
+.postUsername>div:nth-child(2) {
+    /* border : 2px solid green; */
+    width: 85%;
+
+}
+
+.postUsername>p {
+    /* border: 2px solid black; */
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 2px;
+
+}
+
+.postUsername>p>div {
+    /* border: 2px solid green; */
+    position: relative;
+    top: 5px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 0px 8px gray;
+    border-radius: 5px;
+    font-size: medium;
+}
+
+.postUsername>p>div>span {
+    padding: 5px;
+}
+
+.postUsername>p>div>span:hover {
+
+    background-color: rgb(222, 222, 222);
+
+}
+
+.postWindwoProfileiPhoto {
+    width: 3em;
+    height: 3em;
+    border-radius: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.postWindwoProfileiPhoto>img {
+    /* width: 3em; */
+    height: 100%;
+}
+
+.postUsername>div>a {
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+    font-size: large;
+
+}
+
+.postUsername>div>p {
+    font-size: .8em;
+    color: gray;
+}
+
+.postContent {
+    /* border: 2px solid green; */
+    width: 92%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.postContent>div:nth-child(1) {
+    /* border: 2px solid black; */
+    width: 100%;
+    font-size: medium;
+}
+
+.postContent>div>p {
+    padding-bottom: 6px;
+}
+
+.postContent>div:nth-child(2) {
+    /* border: 2px solid black; */
+    width: 100%;
+    max-height: 16em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 12px;
+
+}
+
+.postContent>div>img {
+    max-height: 48vh;
+}
+
+.postLikeCommentShare {
+    /* border: 2px solid blue; */
+    width: 92%;
+    display: flex;
+}
+
+.postLikeCommentShare>button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: x-large;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    margin: 0px 7px 0px 7px;
+}
+
+.commentBoxWindow {
+    /* border: 2px solid blue; */
+    width: 90%;
+}
+
+.postWindow>p {
+    /* border: 2px solid black; */
+    width: 90%;
+    font-size: large;
+    font-weight: bold;
+}

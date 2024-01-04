@@ -1,0 +1,93 @@
+.requestsBox {
+    /* border: 2px solid green; */
+    width: 92%;
+    height: 66vh;
+    margin: 16px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+.requests {
+    /* border: 2px solid green; */
+    height: 93%;
+    overflow: scroll;
+
+
+}
+
+.requests::-webkit-scrollbar {
+    display: none;
+}
+
+.requestTab {
+    /* border: 2px solid orangered; */
+    width: 89%;
+    height: 8.3em;
+    margin: 8px auto 19px auto;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    border-radius: 12px;
+    box-shadow: 0px 0px 8px gray;
+
+}
+
+.requestUsername {
+    /* border : 2px solid blue; */
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 90%;
+}
+
+.requestUsername>div {
+    width: 3em;
+    height: 3em;
+    border-radius: 100%;
+    overflow: hidden;
+}
+
+.requestUsername>div>img {
+    width : 100%;
+}
+
+.requestUsername>p {
+    font-size: larger;
+    font-weight: bold;
+}
+
+.actionBtn {
+    /* border : 2px solid green; */
+    width: 90%;
+    display: flex;
+    justify-content: space-between
+}
+
+.actionBtn>button {
+    width: 47%;
+    height: 2.5em;
+    font-size: medium;
+    border-radius: 100vw;
+    background-color: rgb(107, 74, 224);
+    color: white;
+    border: none;
+}
+
+.actionBtn>button:hover {
+    background-color: rgb(75, 37, 212);
+}
+
+
+.actionBtn>button:nth-child(2) {
+    background-color: gray;
+
+}
+
+.actionBtn>button:nth-child(2):hover {
+    background-color: red;
+}

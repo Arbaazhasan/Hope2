@@ -1,0 +1,101 @@
+.header {
+    /* border: 2px solid palevioletred; */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 2px 2px 12px gray;
+    background-color: white;
+    height: 4em;
+    position: fixed;
+    z-index: 100;
+}
+
+.header>main {
+    /* border: 2px solid black; */
+    width: 80vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.headerLogo {
+    /* border: 2px solid black; */
+    width: 25%;
+    font-size: 3em;
+    text-transform: uppercase;
+}
+
+.center {
+    /* border: 2px solid green; */
+    width: 38%;
+    height: 53%;
+    display: flex;
+    justify-content: space-around;
+    background-color: rgb(241, 237, 246);
+    border-radius: 100vw;
+
+}
+
+.center>form {
+    width: 95%;
+    padding: 5px 0px 5px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+
+.center>form>input {
+    width: 92%;
+    padding: 4px;
+    font-size: medium;
+    background-color: transparent;
+    border: none;
+}
+
+.center>form>input:focus {
+    outline: none;
+}
+
+.UserProfileIcon {
+    width: 25%;
+
+}
+
+.UserProfileIcon>div {
+    /* border: 2px solid blue; */
+    width: 2.5em;
+    height: 2.5em;
+    float: right;
+    border-radius: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-shadow: 0px 0px 8px gray;
+}
+
+.UserProfileIcon>div>img {
+    /* width: 2.5em;    */
+    height: 100%;
+}
+
+#LogoutBtn {
+    width: 5em;
+    text-align: center;
+    font-size: medium;
+    cursor: pointer;
+    background-color: white;
+    padding: 5px;
+    border-radius: 10px;
+    position: absolute;
+    top: 3.5em;
+    box-shadow: 0px 0px 8px gray;
+}
+
+#LogoutBtn:hover {
+    background-color: whitesmoke;
+    border: 2px solid gray;
+}
