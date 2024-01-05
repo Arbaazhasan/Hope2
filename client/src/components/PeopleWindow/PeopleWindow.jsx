@@ -6,7 +6,35 @@ import { server } from '../../App';
 
 const PeopleWindow = () => {
 
+
     const [peopleAlluserData, setPeopleAlluserData] = useState([]);
+    const [checkIsFollow, setCheckIsFollow] = useState();
+
+    const [reRenderData, setReRenderData] = useState(false);
+
+
+    const followUser = async (userId) => {
+
+
+        try {
+
+            const { data } = await axios.put(`${server}/user/follow/${userId}`, {},
+                {
+                    headers: {
+                        "Content-type": "application/json"
+                    },
+                    withCredentials: true
+                });
+
+            setReRenderData((pre) => !pre);
+
+        } catch (error) {
+            console.log(error);
+
+        }
+
+    };
+
 
     useEffect(() => {
 
@@ -22,7 +50,7 @@ const PeopleWindow = () => {
             }).then((res) => {
                 setPeopleAlluserData(res.data.allUsers);
 
-                // console.log(peopleAlluserData);
+                console.log(peopleAlluserData);
 
 
             }).catch((error) => {
@@ -34,7 +62,21 @@ const PeopleWindow = () => {
         }
 
 
-    }, []);
+
+        // Follow User 
+
+        try {
+
+
+
+
+        } catch (error) {
+
+        }
+
+
+
+    }, [reRenderData]);
 
 
     return (
@@ -53,7 +95,7 @@ const PeopleWindow = () => {
                                 <img src={`image/${i.profilePicture ? i.profilePicture : "usericon.png"}`} alt="" />
                             </div>
                             <p>{i.name}</p>
-                            <div><button>Follow</button>
+                            <div ><button onClick={() => followUser(i._id)}>{i.isFollow ? "Unfollow" : "Follow"}</button>
                             </div>
                         </div>;
                     }
@@ -62,7 +104,7 @@ const PeopleWindow = () => {
 
 
             </div>
-        </div>
+        </div >
     );
 };
 

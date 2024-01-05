@@ -18,8 +18,8 @@ const Login = () => {
     const submitHandler = async (e) => {
         e.preventDefault();
 
-        setLoading(true);
         try {
+            setLoading(true);
 
             const { data } = await axios.post(`${server}/user/login`,
                 {
@@ -33,12 +33,14 @@ const Login = () => {
                     withCredentials: true,
                 },
             );
+
             setIsAuthonticated(true);
             setLoading(false);
             toast.success(data.message);
 
         } catch (error) {
             setIsAuthonticated(false);
+            setLoading(false);
             toast.error(error.response.data.message);
 
         }

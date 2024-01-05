@@ -153,6 +153,8 @@ export const follow = async (req, res) => {
 };
 
 
+// Folloers List
+
 export const getFollowersList = async (req, res) => {
 
     const getFollowersList = req.user.followers;
@@ -182,7 +184,7 @@ export const getFollowersList = async (req, res) => {
 
     );
 
-    console.log(followersList);
+    // console.log(followersList);
 
 
     await Promise.all(
@@ -297,21 +299,45 @@ export const updateUserInfo = async (req, res) => {
 };
 
 
+// Get All User 
 
 export const getAllUsers = async (req, res) => {
-
     try {
-        const allUsers = await User.find();
+        const getAllUsers = await User.find();
+        const getUserFollowing = req.user.following;
+
+        const allUsersList = [];
+
+        for (const user of getAllUsers) {
+            const getUser = await User.findById(user);
+
+            if (!getUser) {
+                console.log("User not found !!!");
+                continue; // Skip to the next iteration if the user is not found
+            }
+
+            const isFollow = getUserFollowing.includes(getUser._id);
+
+            console.log(isFollow);
+
+            const AllUserObject = {
+                _id: getUser._id,
+                name: getUser.name,
+                profilePicture: getUser.profilePicture ? getUser.profilePicture : "usericon.png",
+                isFollow: isFollow,
+            };
+
+            allUsersList.push(AllUserObject);
+        }
 
         res.status(200).json({
             success: true,
-            allUsers: allUsers
+            allUsers: allUsersList
         });
     } catch (error) {
-
         res.status(200).json({
-            success: true,
-            message: error
+            success: false,
+            message: error.message
         });
     }
 };

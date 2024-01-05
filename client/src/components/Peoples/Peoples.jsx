@@ -3,10 +3,10 @@ import "./peoples.css";
 import axios from 'axios';
 import { server } from '../../App';
 
-
 const Peoples = () => {
-
     const [getAllusers, setGetAllusers] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         axios.get(`${server}/user/getallusers`, {
@@ -14,14 +14,16 @@ const Peoples = () => {
                 "Content-Type": "application/json",
             },
             withCredentials: true,
-        }).then((res) => {
+        })
+        .then((res) => {
             setGetAllusers(res.data.allUsers);
-            console.log(res.data);
-        }).catch((error) => {
-            console.log(error);
+            setLoading(false);
+        })
+        .catch((error) => {
+            setError(error);
+            setLoading(false);
         });
     }, []);
-
 
     return (
         <div>
@@ -29,30 +31,27 @@ const Peoples = () => {
                 <div className='youWantToKnow'>
                     <h3>You want to know</h3>
                 </div>
-                <div className="peopleTabs">
-
-
-                    {
-                        getAllusers.map((i) => {
-                            return <div className="peopleTab">
+                {loading ? (
+                    <p>Loading...</p>
+                ) : error ? (
+                    <p>Error loading data</p>
+                ) : (
+                    <div className="peopleTabs">
+                        {getAllusers.map((user) => (
+                            <div key={user.id} className="peopleTab">
                                 <div className="peopleProfileIcon">
-                                    <img src={`image/${i.profilePicture}`} alt="ProfileIcon" />
+                                    <img src={`image/${user.profilePicture}`} alt="ProfileIcon" />
                                 </div>
                                 <div>
                                     <div>
-                                        <p>{i.name}</p>
+                                        <p>{user.name}</p>
                                     </div>
-
                                     <span>UnFollow</span>
                                 </div>
-                            </div>;
-
-                        })
-                    }
-
-
-
-                </div>
+                            </div>
+                        ))}
+                    </div>
+                )}
                 <div className="morePeoples">
                     <p>More</p>
                 </div>

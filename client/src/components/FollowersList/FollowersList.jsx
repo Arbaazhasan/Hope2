@@ -20,6 +20,8 @@ const FollowersList = () => {
     const [followerList, setFollowerList] = useState([]);
     const [followingList, setFollwoingList] = useState([]);
 
+    const [reFreshData, setReFreshData] = useState(false);
+
     //Follow And UnFollow user  
 
     const followAndUnfollowUser = async (id) => {
@@ -30,8 +32,9 @@ const FollowersList = () => {
             withCredentials: true
         });
 
-        // setRefreshData((pre) => !pre);
+        setReFreshData((pre) => !pre);
         console.log(data);
+
     };
 
 
@@ -55,7 +58,7 @@ const FollowersList = () => {
             });
 
 
-    }, []);
+    }, [reFreshData]);
 
 
 

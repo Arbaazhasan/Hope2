@@ -44,6 +44,14 @@
     margin-top: 20px;
 }
 
+.userProfileBox>p {
+    /* border: 2px solid green; */
+    width: 90%;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
 .userProfileBox:hover {
     transform: scale(1.1);
     transition: .5s all;
