@@ -239,6 +239,7 @@ export const getComments = async(req, res)=>{
 
     const post = await Post.findById(postId);
     
+    
     if (!post || !post.comment || post.comment.length === 0) return res.status(200).json({
           success: true,
           comments: false,
@@ -415,30 +416,71 @@ const isSavedPost = await usersavedPostsArray.includes(postId);
 
 
 
-
-
-
 // Get aLL User Uploads Posts
-
 export const getAllUsersPosts = async (req, res) => {
 
-    const allPosts = await Post.find();
+    // const allPosts = await Post.find();
     
-    const userProfileImage = allPosts.map(async (i) => {
-        const userData = await User.findById(i.userId);
-        return userData;
-      });
+    // const userProfileImage = allPosts.map(async (i) => {
+    //     const userData = await User.findById(i.userId);
+    //     return userData;
+    //   });
       
-      const usersAlldata = await Promise.all(userProfileImage);
+    //   const usersAlldata = await Promise.all(userProfileImage);
       
-    //   console.log(usersAlldata);
+    //   console.log(usersAlldata[0].profilePicture);
       
 
-    if (allPosts) return res.status(200).json({
-        success: true,
-        allposts: allPosts.reverse(),
-        userProfileData : usersAlldata.reverse()
-    });
+    // if (allPosts) return res.status(200).json({
+    //     success: true,
+    //     allposts: allPosts.reverse(),
+    //     userProfileData : usersAlldata.reverse()
+    // });
+
+    
+
+try {
+    const allPosts = await Post.find();
+
+    const allPostsData = [];
+    
+    for(const i of allPosts){
+
+        const getUser = await User.findById(i.userId);
+
+        if(!getUser) {
+            continue;
+        }
+
+         const postData = {
+            _id : i._id,
+            username : i.username,
+            userId : i.userId,
+            desc : i.desc,
+            img : i.img,
+            likes : i.likes,
+            profilePicture : getUser.profilePicture
+
+         }
+
+         allPostsData.push(postData);
+    }
+
+
+   if(allPosts){ res.status(200).json({
+        success : true,
+        allposts : allPostsData.reverse()
+    })
+}
+    
+} catch (error) {
+
+    res.status(400).json({
+        success : false,
+        messaage : error
+    })
+}
+ 
 };
 
 

@@ -14,6 +14,8 @@ import CommentBox from '../../components/commentBox/CommentBox';
 import Peoples from '../../components/Peoples/Peoples';
 import LikedPosts from '../../components/LikedPosts/LikedPosts';
 import PeopleWindow from '../../components/PeopleWindow/PeopleWindow.jsx';
+import AaccountSettings from '../../components/AccountSettings/AaccountSettings.jsx';
+import ExploreFollowers from '../../components/ExploreFollowers/ExploreFollowers.jsx';
 
 
 const Home = () => {
@@ -36,106 +38,151 @@ const Home = () => {
         savedPostsPage, setSavedPostsPage,
         likedPosts, setLikedPosts,
         accountSettings, setAccountSettings,
-        explore
+        explore,
+        followersList, setFollowersList,
+        followingList, setFollowingList,
 
     } = useContext(Context);
     const [allSavedPosts, setAllSavedPosts] = useState([]);
     const [allLikedPosts, setAllLikedPosts] = useState([]);
 
+    const [userFollowingList, setUserFollowingList] = useState([]);
+    const [userFollwersList, setUserFollowersList] = useState([]);
+
+
+    const [lfollowerList, setFollowerList] = useState([]);
+    const [lfollowingList, setFollwoingList] = useState([]);
+
+
+
 
     useEffect(() => {
 
-        // Fetching User Data From API
+        if (isAuthonticated) {
 
-        try {
-            if (isAuthonticated) {
-                axios.get(`${server}/user/me`,
-                    {
-                        withCredentials: true
-                    }).then((res) => {
-                        const { name, email, followers, following, bio, status, lives, work, profilePicture } = res.data.user;
-                        setUserName(name);
-                        setUserEmail(email);
-                        setFollowers(followers);
-                        setFollowing(following);
-                        setBio(bio);
-                        setStatus(status);
-                        setLives(lives);
-                        setWork(work);
-                        setProfilePhoto(profilePicture);
 
-                    });
+            // Fetching User Data From API
+
+            try {
+                if (isAuthonticated) {
+                    axios.get(`${server}/user/me`,
+                        {
+                            withCredentials: true
+                        }).then((res) => {
+                            const { name, email, followers, following, bio, status, lives, work, profilePicture } = res.data.user;
+                            setUserName(name);
+                            setUserEmail(email);
+                            setFollowers(followers);
+                            setFollowing(following);
+                            setBio(bio);
+                            setStatus(status);
+                            setLives(lives);
+                            setWork(work);
+                            setProfilePhoto(profilePicture);
+
+                        });
+                }
+
+            } catch (error) {
+                console.log(error);
             }
 
-        } catch (error) {
-            console.log(error);
-        }
 
 
+            // Fetching All Users Posts from API
 
-        // Fetching All Users Posts from API
+            try {
+                if (isAuthonticated) {
+                    axios.get(`${server}/post/getallusersposts`,
+                        {
+                            withCredentials: true,
+                        }).then((res) => {
+                            // console.log(res.data.allposts);
+                            setAllUsersPosts(res.data.allposts);
+                            setNewProfilePhoto(res.data.userProfileData);
 
-        try {
-            if (isAuthonticated) {
-                axios.get(`${server}/post/getallusersposts`,
-                    {
-                        withCredentials: true,
-                    }).then((res) => {
-                        // console.log(res.data.allposts);
-                        setAllUsersPosts(res.data.allposts);
-                        setNewProfilePhoto(res.data.userProfileData);
 
-                    }).catch((e) => {
-                        console.log(e);
-                    });
-                setPostAccouont(false);
+                            // console.log(res.data.userProfileData[0].profilePicture);
+
+
+                        }).catch((e) => {
+                            console.log(e);
+                        });
+                    setPostAccouont(false);
+                }
+            } catch (error) {
+                console.log(error);
             }
-        } catch (error) {
-            console.log(error);
-        }
 
 
 
-        // Fetching All User Saved Posts Using API
-        try {
+            // Fetching All User Saved Posts Using API
+            try {
 
-            axios.get(`${server}/post/getsavedposts`, {
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                withCredentials: true
-            }).then((res) => {
-                // console.log(res.data.savedPosts);
-                setAllSavedPosts(res.data.savedPosts);
-            }).catch((error) => {
+                axios.get(`${server}/post/getsavedposts`, {
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    withCredentials: true
+                }).then((res) => {
+                    // console.log(res.data.savedPosts);
+                    setAllSavedPosts(res.data.savedPosts);
+                }).catch((error) => {
+                    console.log(error);
+                });
+
+            } catch (error) {
                 console.log(error);
-            });
-
-        } catch (error) {
-            console.log(error);
 
 
-        }
+            }
 
 
 
-        // Fetching All User Liked Posts From API
+            // Fetching All User Liked Posts From API
 
-        try {
+            try {
 
-            axios.get(`${server}/post/getlikedposts`, {
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                withCredentials: true
-            }).then((res) => {
-                setAllLikedPosts(res.data.likedPosts);
-                // console.log(res.data.likedPosts);
-            }).catch((error) => {
+                axios.get(`${server}/post/getlikedposts`, {
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    withCredentials: true
+                }).then((res) => {
+                    setAllLikedPosts(res.data.likedPosts);
+                    // console.log(res.data.likedPosts);
+                }).catch((error) => {
+                    console.log(error);
+                });
+            } catch (error) {
                 console.log(error);
-            });
-        } catch (error) {
-            console.log(error);
+            }
+
+
+
+
+            // Fetching User Followers and Following 
+
+
+
+
+
+            axios.get(`${server}/user/getfollowerslist`,
+                {
+                    headers: {
+                        "Content-Type": "application/json"
+                    }, withCredentials: true
+                }).then((res) => {
+
+                    setUserFollowersList(res.data.followersList);
+                    setUserFollowingList(res.data.followingList);
+
+                }).catch((error) => {
+                    console.log(error);
+                });
+
+
+
         }
 
 
@@ -175,16 +222,31 @@ const Home = () => {
                     {/* Home page Center Post Bar  */}
                     <PostBar />
 
-                    {/* Home page Post Windows  */}
 
+                    {/* Home page Post Windows  */}
                     {
 
                         homePage && allUsersPosts?.map((i) => (
-                            < PostWindow id={i._id} userName={i.username} userId={i.userId} desc={i.desc} img={i.img} likes={i.likes} key={i._id} />
+                            < PostWindow id={i._id} userName={i.username} userId={i.userId} desc={i.desc} img={i.img} likes={i.likes} profilePhoto={i.profilePicture} key={i._id} />
 
                         ))
 
                     }
+
+                    {/* Followers List on home screen */}
+
+                    {
+                        followersList && <ExploreFollowers userFollowerData={userFollwersList} />
+
+                    }
+
+                    {/* Follwoing List on home screen */}
+
+                    {
+                        followingList && <ExploreFollowers userFollowerData={userFollowingList} />
+                    }
+
+
 
                     {/* Know more People */}
 
@@ -214,6 +276,12 @@ const Home = () => {
                             < PostWindow id={i._id} userName={i.username} userId={i.userId} desc={i.desc} img={i.img} likes={i.likes} key={i._id} />
 
                         ))
+
+                    }
+
+                    {accountSettings && <h2 style={{ margin: "15px 0px 0px 20px" }}>Settings</h2>}
+                    {
+                        accountSettings && <AaccountSettings />
 
                     }
 

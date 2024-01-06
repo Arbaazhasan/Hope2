@@ -8,7 +8,7 @@ import toast from 'react-hot-toast';
 import { Context } from '../..';
 
 
-const CommentBox = ({ id, userName, postComment, commentUserPhoto }) => {
+const CommentBox = ({ id, commentUsername, postComment, commentUserPhoto }) => {
 
 
     const { profilePhoto, setRefreshData } = useContext(Context);
@@ -55,7 +55,7 @@ const CommentBox = ({ id, userName, postComment, commentUserPhoto }) => {
                                             commentUserPhoto[index] ? <img src={`/image/${commentUserPhoto[index]}`} alt="" /> : <img src={`/image/${profilePhoto}`} alt="" />
                                         }
                                     </div>
-                                    <span>{userName}</span>
+                                    <span>{commentUsername[index]}</span>
                                 </div>
                                 <div>
                                     <p>{i}</p>

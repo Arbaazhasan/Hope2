@@ -22,6 +22,7 @@ function App() {
   const { user, setUser, isAuthonticated, setIsAuthonticated, refreshData, loading } = useContext(Context);
 
   useEffect(() => {
+
     axios.get(`${server}/user/me`, {
       withCredentials: true
     }).then((res) => {
@@ -44,7 +45,6 @@ function App() {
 
       <Routes>
         <Route path='/login' element={<Login />} />
-        {/* <Route path='/' element={<Home />} /> */}
         <Route path='/' element={<Home />} />
         <Route path='/register' element={<Register />} />
         <Route path='/profile' element={<Profile />} />

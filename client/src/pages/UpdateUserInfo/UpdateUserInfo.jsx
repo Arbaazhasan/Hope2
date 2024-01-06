@@ -21,7 +21,7 @@ const UpdateUserInfo = () => {
     // const [profilePicture2, setProfilePicture2] = useState();
     const [coverPhoto, setCoverPhoto] = useState();
 
-    console.log(profilePicture);
+    // console.log(profilePicture);
 
     const submitHandler = async (e) => {
         e.preventDefault();
@@ -92,7 +92,7 @@ const UpdateUserInfo = () => {
                             <input type="file" placeholder="Profile Picture" name="profilePicture" onChange={(e) => setProfilePicture(e.target.files[0])} />
                         </div>
                         <div>
-                            <label htmlFor="">Cover Photo</label>
+                            {/* <label htmlFor="">Cover Photo</label> */}
 
                             {/* <input type="file" placeholder="Cover Picture" onChange={(e) => setCoverPhoto(e.target.files[0])} /> */}
                             {/* <input type="file" placeholder="Profile Picture" name="coverPhoto" onChange={(e) => setCoverPhoto(e.target.files[0])} /> */}

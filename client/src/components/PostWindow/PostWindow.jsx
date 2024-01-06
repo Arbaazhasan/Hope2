@@ -28,6 +28,7 @@ const PostWindow = ({ id, userName, profilePhoto, userId, desc, img, likes }) =>
 
     const [postComments, setPostComments] = useState([]);
     const [commentUserPhotos, setCommentUserPhotos] = useState([]);
+    const [commentUsername, setCommentUsername] = useState([]);
 
 
 
@@ -127,11 +128,15 @@ const PostWindow = ({ id, userName, profilePhoto, userId, desc, img, likes }) =>
         }).then((res) => {
 
             if (res.data.comments) {
-                // Extract comments and user photos from the response
+                // Extract comments and user Details from the response
                 const comments = res.data.comments.map((i) => i.comment);
                 const userPhotos = res.data.comments.map((i) => i.commentUserPriofilePicture);
+                const commentUsername = res.data.comments.map((i) => i.commentUsername);
+
 
                 // Update state variables with the arrays of comments and user photos
+
+                setCommentUsername(commentUsername);
                 setPostComments(comments);
                 setCommentUserPhotos(userPhotos);
 
@@ -196,7 +201,7 @@ const PostWindow = ({ id, userName, profilePhoto, userId, desc, img, likes }) =>
             </div>
             {
                 isCommentClick && <div className="commentBoxWindow">
-                    <CommentBox id={id} userName={userName} postComment={postComments} commentUserPhoto={commentUserPhotos} />
+                    <CommentBox id={id} commentUsername={commentUsername} postComment={postComments} commentUserPhoto={commentUserPhotos} />
 
                 </div>
             }

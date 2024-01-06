@@ -318,7 +318,7 @@ export const getAllUsers = async (req, res) => {
 
             const isFollow = getUserFollowing.includes(getUser._id);
 
-            console.log(isFollow);
+            // console.log(isFollow);
 
             const AllUserObject = {
                 _id: getUser._id,

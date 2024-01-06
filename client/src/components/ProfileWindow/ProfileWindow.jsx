@@ -30,11 +30,11 @@ const ProfileWindow = ({ username, email, followers, following }) => {
                     <div className="userFollowList">
                         <div className="userFollowings">
                             <p>{followers.length}</p>
-                            <span>Followings</span>
+                            <span>Followers</span>
                         </div>
                         <div className="userFollowers">
                             <p> {following.length}</p>
-                            <span>Followers</span>
+                            <span>Followings</span>
                         </div>
                         <div className="userPosts" style={{ border: "none" }}>
                             <p>31</p>

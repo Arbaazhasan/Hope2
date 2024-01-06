@@ -15,14 +15,14 @@ const Peoples = () => {
             },
             withCredentials: true,
         })
-        .then((res) => {
-            setGetAllusers(res.data.allUsers);
-            setLoading(false);
-        })
-        .catch((error) => {
-            setError(error);
-            setLoading(false);
-        });
+            .then((res) => {
+                setGetAllusers(res.data.allUsers);
+                setLoading(false);
+            })
+            .catch((error) => {
+                setError(error);
+                setLoading(false);
+            });
     }, []);
 
     return (
@@ -38,7 +38,7 @@ const Peoples = () => {
                 ) : (
                     <div className="peopleTabs">
                         {getAllusers.map((user) => (
-                            <div key={user.id} className="peopleTab">
+                            <div key={user._id} className="peopleTab">
                                 <div className="peopleProfileIcon">
                                     <img src={`image/${user.profilePicture}`} alt="ProfileIcon" />
                                 </div>

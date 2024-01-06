@@ -32,6 +32,14 @@ const AppWrapper = () => {
   const [likedPosts, setLikedPosts] = useState(false);
   const [accountSettings, setAccountSettings] = useState(false);
   const [explore, setExplore] = useState(false);
+  const [followersList, setFollowersList] = useState(false);
+  const [followingList, setFollowingList] = useState(false);
+
+
+
+  const [val, setVal] = useState();
+
+
 
 
   return (
@@ -62,7 +70,13 @@ const AppWrapper = () => {
       savedPostsPage, setSavedPostsPage,
       likedPosts, setLikedPosts,
       accountSettings, setAccountSettings,
-      explore, setExplore
+      explore, setExplore,
+      followersList, setFollowersList,
+      followingList, setFollowingList,
+      
+
+
+      val, setVal
 
     }}>
       <App />

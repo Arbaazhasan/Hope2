@@ -1,11 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import "./accountSettings.css";
+import { Context } from '../..';
+import { Link } from 'react-router-dom';
+
+
 
 const AaccountSettings = () => {
+
+    const { setVal } = useContext(Context);
+
+
     return (
         <div className='AaccountSettings'>
             <div className="ChangePassword">
-                <div className="ChangePasswordWidnowClose">
+                <div className="ChangePasswordWidnowClose" onClick={() => setVal("home")}>
                     <label htmlFor="">X</label>
                 </div>
                 <div className="ChangePasswordHeading">
@@ -15,7 +23,7 @@ const AaccountSettings = () => {
                     <h3>Change Password</h3>
                     <input type="text" placeholder='Enter the old password ' />
                     <input type="text" placeholder='Enter the new password ' />
-                    <input type="text" placeholder='Enter re-enter the new password ' />
+                    <input type="text" placeholder='Re-enter the new password ' />
                     <button>Change</button>
 
                 </form>

@@ -1,10 +1,15 @@
 .AaccountSettings {
     width: 100%;
-    height: 100vh;
+    min-height: 90%;
+    height: 41rem;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: rgba(241, 237, 246, 0.625);
+    /* border: 2px solid green; */
+    position: absolute;
+    top: 4em;
+    left: 0;
 
 }
 
@@ -66,8 +71,7 @@
     justify-content: space-evenly
 }
 
-.ChangePassword>form>h3
-{
+.ChangePassword>form>h3 {
     width: 100%;
 }
 
@@ -81,8 +85,7 @@
     background-color: rgb(241, 237, 246);
 }
 
-.ChangePassword>form>input:focus
-{
+.ChangePassword>form>input:focus {
     outline: none;
 }
 
@@ -96,10 +99,10 @@
     font-size: medium;
 }
 
-.ChangePassword>form>button:hover{
-    background-color :white;
-    color : rgb(107, 74, 224);
-    border : 3px solid rgb(107, 74, 224);
+.ChangePassword>form>button:hover {
+    background-color: white;
+    color: rgb(107, 74, 224);
+    border: 3px solid rgb(107, 74, 224);
     transition: all .7s;
-    font-weight : bold;
+    font-weight: bold;
 }
