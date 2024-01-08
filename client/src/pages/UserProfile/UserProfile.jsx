@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import "./profile.css";
+// import "./profile.css";
 import Bio from '../../components/Bio/Bio';
 import ProfileWindow from '../../components/ProfileWindow/ProfileWindow';
 import PostBar from "../../components/PostBar/PostBar";
@@ -16,22 +16,31 @@ import { server } from '../../App';
 import toast from 'react-hot-toast';
 
 
-const Profile = () => {
+const UserProfile = () => {
+
+    const [userData, setUserData] = useState([]);
 
 
-    const { isAuthonticated, setIsAuthonticated,
-        userName,
-        userEmail,
-        followers,
-        following,
-        bio,
-        status,
-        lives,
-        work,
-        postData, setPostData,
+    const [userID, setUserId] = useState();
+    const [userName, setUserName] = useState();
+    const [userEmail, setUserEmail] = useState();
+    const [followers, setFollowers] = useState([]);
+    const [following, setFollowing] = useState([]);
+    const [bio, setBio] = useState();
+    const [status, setStatus] = useState();
+    const [lives, setLives] = useState();
+    const [work, setWork] = useState();
+    const [profilePhoto, setProfilePhoto] = useState();
+    const [postData, setPostData] = useState();
+
+
+
+
+    const { isAuthonticated,
         setPostAccouont,
-        profilePhoto,
         refreshData,
+        userProfileId,
+        setRefreshData
     } = useContext(Context);
 
 
@@ -42,6 +51,7 @@ const Profile = () => {
             {
                 withCredentials: true
             }).then((res) => {
+
                 // console.log(res.data.posts);
                 setPostData(res.data.posts);
 
@@ -52,9 +62,54 @@ const Profile = () => {
             });
         setPostAccouont(true);
 
-    }, [refreshData]);
+
+        // Getting User Profile Data
 
 
+
+        const fetchData = async () => {
+            try {
+                const { data } = await axios.get(`${server}/user/getuserprofiledata/${userProfileId}`, {
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    withCredentials: true
+                });
+
+                setUserData(data.userProfile);
+
+
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        fetchData();
+
+
+
+    }, [refreshData, userProfileId]);
+
+
+
+    useEffect(() => {
+        // console.log(userData.followers);
+        if (userData && userData.followers && userData.following && userData.profilePicture) {
+            setFollowers(userData.followers);
+            setFollowing(userData.following);
+            setProfilePhoto(userData.profilePicture);
+
+        }
+
+        setUserId(userData._id);
+        setUserName(userData.name);
+        setUserEmail(userData.email);
+        setBio(userData.bio);
+        setStatus(userData.status);
+        setLives(userData.lives);
+        setWork(userData.work);
+
+    }, [userData]);
 
     if (!isAuthonticated) return <Navigate to={'/login'} />;
 
@@ -72,11 +127,10 @@ const Profile = () => {
                 {/* User Profile Window */}
 
                 <ProfileWindow username={userName} email={userEmail} followers={followers} following={following} profilePhoto={profilePhoto} />
-                {/* {console.log(profilePhoto)} */}
 
                 {/* PostBar */}
 
-                <PostBar />
+                {/* <PostBar /> */}
 
 
                 {/* User ALl Posts */}
@@ -98,4 +152,4 @@ const Profile = () => {
     );
 };
 
-export default Profile;
+export default UserProfile;

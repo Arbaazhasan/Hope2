@@ -4,20 +4,23 @@ import axios from 'axios';
 import { server } from '../../App';
 import { Context } from '../..';
 
-const ProfileWindow = ({ username, email, followers, following }) => {
-    const { profilePhoto } = useContext(Context);
+const ProfileWindow = ({ username, email, followers, following, profilePhoto }) => {
+    // const { profilePhoto } = useContext(Context);
     // console.log(username, email, followers, following);
+    // console.log(profilePhoto)
+
 
     return (
         <div>
             <div className="profileWindow">
                 <div className="userBackgroundImage">
-                    <img src={`image/${profilePhoto}`} alt="backgroundImage" />
+                    <img src={`image/${profilePhoto ? profilePhoto : "usericon.png"}`} alt="backgroundImage" />
                 </div>
 
                 <div className="userProfileInfo">
                     <div className="userProfilePhoto1st">
                         <div className='userProfilePhoto'>
+
                             <img src={`image/${profilePhoto ? profilePhoto : "usericon.png"}`} alt="profilePhoto" />
                         </div>
                     </div>

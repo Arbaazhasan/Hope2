@@ -15,6 +15,8 @@ const AppWrapper = () => {
   const [userEmail, setUserEmail] = useState();
   const [followers, setFollowers] = useState([]);
   const [following, setFollowing] = useState([]);
+  const [searchUserData, setSearchUserData] = useState([]);
+
   const [bio, setBio] = useState();
   const [status, setStatus] = useState();
   const [lives, setLives] = useState();
@@ -25,6 +27,8 @@ const AppWrapper = () => {
   const [postAccount, setPostAccouont] = useState(false);
   const [newProfilePhoto, setNewProfilePhoto] = useState();
   const [commentBox, setCommentBox] = useState();
+  const [userProfileId, setUserProfileId] = useState();
+
   const [loading, setLoading] = useState(false);
   const [savedPostWindow, setSavedPostWindow] = useState(false);
   const [homePage, setHomePage] = useState(true);
@@ -34,6 +38,11 @@ const AppWrapper = () => {
   const [explore, setExplore] = useState(false);
   const [followersList, setFollowersList] = useState(false);
   const [followingList, setFollowingList] = useState(false);
+  const [newFeed, setNewFeed] = useState(false);
+  const [searchUser, setSearchUser] = useState(false);
+  const [isSearch, setIsSearch] = useState(false);
+
+
 
 
 
@@ -73,7 +82,11 @@ const AppWrapper = () => {
       explore, setExplore,
       followersList, setFollowersList,
       followingList, setFollowingList,
-      
+      newFeed, setNewFeed,
+      searchUser, setSearchUser,
+      searchUserData, setSearchUserData,
+      userProfileId, setUserProfileId,
+      isSearch, setIsSearch,
 
 
       val, setVal

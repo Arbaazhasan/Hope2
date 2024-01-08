@@ -50,7 +50,7 @@ const PeopleWindow = () => {
             }).then((res) => {
                 setPeopleAlluserData(res.data.allUsers);
 
-                console.log(peopleAlluserData);
+                // console.log(peopleAlluserData);
 
 
             }).catch((error) => {
@@ -59,19 +59,6 @@ const PeopleWindow = () => {
         } catch (error) {
 
             console.log(error);
-        }
-
-
-
-        // Follow User 
-
-        try {
-
-
-
-
-        } catch (error) {
-
         }
 
 

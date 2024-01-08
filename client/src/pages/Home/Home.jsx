@@ -16,6 +16,7 @@ import LikedPosts from '../../components/LikedPosts/LikedPosts';
 import PeopleWindow from '../../components/PeopleWindow/PeopleWindow.jsx';
 import AaccountSettings from '../../components/AccountSettings/AaccountSettings.jsx';
 import ExploreFollowers from '../../components/ExploreFollowers/ExploreFollowers.jsx';
+import SearchUser from '../../components/SearchUser/SearchUser.jsx';
 
 
 const Home = () => {
@@ -41,6 +42,8 @@ const Home = () => {
         explore,
         followersList, setFollowersList,
         followingList, setFollowingList,
+        newFeed,
+        searchUser
 
     } = useContext(Context);
     const [allSavedPosts, setAllSavedPosts] = useState([]);
@@ -49,10 +52,7 @@ const Home = () => {
     const [userFollowingList, setUserFollowingList] = useState([]);
     const [userFollwersList, setUserFollowersList] = useState([]);
 
-
-    const [lfollowerList, setFollowerList] = useState([]);
-    const [lfollowingList, setFollwoingList] = useState([]);
-
+    const [followingUserPosts, setFollowingUserPosts] = useState([]);
 
 
 
@@ -139,6 +139,27 @@ const Home = () => {
 
 
 
+
+            // Fetching Following User Posts 
+            try {
+                axios.get(`${server}/user/followingpost`, {
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    withCredentials: true
+                }).then((res) => {
+                    // console.log(res.data.userPosts);
+                    setFollowingUserPosts(res.data.userPosts);
+                });
+
+
+            } catch (error) {
+
+            }
+
+
+
+
             // Fetching All User Liked Posts From API
 
             try {
@@ -163,10 +184,6 @@ const Home = () => {
 
             // Fetching User Followers and Following 
 
-
-
-
-
             axios.get(`${server}/user/getfollowerslist`,
                 {
                     headers: {
@@ -180,7 +197,6 @@ const Home = () => {
                 }).catch((error) => {
                     console.log(error);
                 });
-
 
 
         }
@@ -218,20 +234,33 @@ const Home = () => {
                     <button >Create Post</button>
 
                 </div>
+
+
+
+
                 <div className="homeCenter">
                     {/* Home page Center Post Bar  */}
                     <PostBar />
 
 
-                    {/* Home page Post Windows  */}
+                    {/* Search User */}
+
+                    {searchUser && <h2 style={{ margin: "15px 0px 0px 20px" }}>Search Result</h2>}
+
+                    {
+                        searchUser && <SearchUser />
+                    }
+
+                    {/* Home page Post Windows / Following Users Posts  */}
                     {
 
-                        homePage && allUsersPosts?.map((i) => (
+                        homePage && followingUserPosts?.map((i) => (
                             < PostWindow id={i._id} userName={i.username} userId={i.userId} desc={i.desc} img={i.img} likes={i.likes} profilePhoto={i.profilePicture} key={i._id} />
 
                         ))
 
                     }
+
 
                     {/* Followers List on home screen */}
 
@@ -268,6 +297,17 @@ const Home = () => {
                     }
 
 
+                    {/* New feed / All Users Posts */}
+                    {newFeed && <h2 style={{ margin: "15px 0px 0px 20px" }}>New Feed</h2>}
+                    {
+                        newFeed && allUsersPosts?.map((i) => (
+                            < PostWindow id={i._id} userName={i.username} userId={i.userId} desc={i.desc} img={i.img} likes={i.likes} profilePhoto={i.profilePicture} key={i._id} />
+
+                        ))
+                    }
+
+
+                    {/* All Liked Posts */}
 
                     {likedPosts && <h2 style={{ margin: "15px 0px 0px 20px" }}>Liked Posts</h2>}
                     {
@@ -278,6 +318,8 @@ const Home = () => {
                         ))
 
                     }
+
+                    {/* Account Settings  */}
 
                     {accountSettings && <h2 style={{ margin: "15px 0px 0px 20px" }}>Settings</h2>}
                     {
@@ -291,7 +333,7 @@ const Home = () => {
                 <div className="homeRight">
                     {/* Message Inbox */}
 
-                    {/* <MessageBox /> */}
+                    <MessageBox />
 
                     <RequestBox />
 

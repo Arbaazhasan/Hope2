@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './header.css';
 import { AiOutlineSearch } from "react-icons/ai";
 import AaccountSettings from '../AccountSettings/AaccountSettings';
@@ -10,8 +10,15 @@ import { toast } from 'react-hot-toast';
 
 const Header = () => {
   const [logoutBtn, setLogoutBtn] = useState();
-  const { isAuthonticated, setIsAuthonticated, profilePhoto } = useContext(Context);
+  const [searchUserName, setSearchUserName] = useState();
 
+  const { isAuthonticated, setIsAuthonticated, profilePhoto, setVal,
+    searchUserData, setSearchUserData
+
+  } = useContext(Context);
+
+
+  // Logout API
   const submitHandler = async () => {
     try {
       const { data } = await axios.get(`${server}/user/logout`,
@@ -35,14 +42,41 @@ const Header = () => {
   };
 
 
+  // Search A User
+  const searchData = (e) => {
+
+    e.preventDefault();
+
+
+    try {
+
+      axios.get(`${server}/user/getUserProfile/${searchUserName}`, {
+        header: {
+          "Content-Type": "application/json"
+        },
+        withCredentials: true
+      }).then((res) => {
+        setSearchUserData(res.data);
+        // console.log(searchUserData);
+      });
+
+    } catch (error) {
+
+      console.log(error);
+
+    }
+
+
+  };
+
   return (
     <div className='header'>
       <main>
         <div className="headerLogo"><span>Hope</span></div>
         <div className="center">
-          <form action="">
+          <form action="" onSubmit={searchData}>
             <AiOutlineSearch size={25} />
-            <input type="text" placeholder='Search for Creators, Inspiration and projects ' />
+            <input onClick={() => setVal("SearchUser")} onChange={(e) => { setSearchUserName(e.target.value); }} type="text" placeholder='Search for Creators, Inspiration and projects ' />
           </form>
         </div>
         <div className="UserProfileIcon">

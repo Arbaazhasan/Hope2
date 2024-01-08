@@ -30,6 +30,9 @@ const PostWindow = ({ id, userName, profilePhoto, userId, desc, img, likes }) =>
     const [commentUserPhotos, setCommentUserPhotos] = useState([]);
     const [commentUsername, setCommentUsername] = useState([]);
 
+    const [checkUrl, setCheckUrl] = useState();
+
+
 
 
 
@@ -166,6 +169,11 @@ const PostWindow = ({ id, userName, profilePhoto, userId, desc, img, likes }) =>
         });
 
 
+        const path = window.location.pathname;
+
+        setCheckUrl(path);
+
+
     }, [refreshData]);
 
 
@@ -181,14 +189,21 @@ const PostWindow = ({ id, userName, profilePhoto, userId, desc, img, likes }) =>
                     <a href="#home">{userName}</a>
                     <p>Dubai, 15 Minutes Ago</p>
                 </div>
-                {postAccount && <p ><SlOptionsVertical onClick={((e) => setPostOption((pre) => !pre))} />
-                    {
-                        postOption && <div>
-                            <span>Edit</span>
-                            <span onClick={deletePost}>Delete</span>
-                        </div>
-                    }
-                </p>}
+
+                {
+                    checkUrl === "/profile" ?
+
+                        postAccount && <p ><SlOptionsVertical onClick={((e) => setPostOption((pre) => !pre))} />
+
+                            {
+                                postOption && <div>
+                                    <span>Edit</span>
+                                    <span onClick={deletePost}>Delete</span>
+                                </div>
+                            }
+                        </p> : ""
+
+                }
             </div>
             <div className="postContent">
                 <div>

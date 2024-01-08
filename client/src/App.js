@@ -13,6 +13,7 @@ import axios from 'axios';
 import Header from './components/Header/Header';
 import UpdateUserInfo from './pages/UpdateUserInfo/UpdateUserInfo';
 import Loading from './components/Loading/Loading';
+import UserProfile from './pages/UserProfile/UserProfile.jsx';
 
 export const server = "http://localhost:4000/api/v1";
 
@@ -49,6 +50,7 @@ function App() {
         <Route path='/register' element={<Register />} />
         <Route path='/profile' element={<Profile />} />
         <Route path='/updateUserInfo' element={<UpdateUserInfo />} />
+        <Route path='/userprofile' element={<UserProfile />} />
       </Routes>
 
       <Toaster />

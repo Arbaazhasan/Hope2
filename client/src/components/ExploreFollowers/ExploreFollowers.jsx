@@ -7,7 +7,7 @@ import { Context } from '../..';
 
 const ExploreFollowers = (userFollowerData) => {
 
-    const { followersList, followingList, } = useContext(Context);
+    const { followersList, followingList } = useContext(Context);
 
     const follwerData = userFollowerData.userFollowerData;
     const follwingData = userFollowerData.userFollowingData;
