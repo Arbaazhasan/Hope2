@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import "./login.css";
 import axios from 'axios';
 import { server } from '../../App';
@@ -14,6 +14,7 @@ const Login = () => {
     const [password, setPassword] = useState();
 
     const { isAuthonticated, setIsAuthonticated, refreshData, setRefreshData, setLoading } = useContext(Context);
+
 
     const submitHandler = async (e) => {
         e.preventDefault();
@@ -45,6 +46,9 @@ const Login = () => {
 
         }
     };
+
+
+
 
     if (isAuthonticated) return <Navigate to={"/"} />;
 
