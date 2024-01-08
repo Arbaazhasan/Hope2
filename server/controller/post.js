@@ -484,6 +484,31 @@ try {
 };
 
 
+
+// Get Searched User Post
+
+export const getSearchUserPost = async (req, res) => {
+
+    const userId = req.params.id;
+    try {
+        
+    const posts = await Post.find({ userId });
+    // console.log(posts)
+
+    res.status(200).json({
+        success: true,
+        posts: posts.reverse()
+    });
+    } catch (error) {
+        
+        console.log(error)
+        
+    }
+
+};
+
+
+
 // export const getMyPost = async (req, res) => {
 //     try {
 //       const { token } = req.cookies;

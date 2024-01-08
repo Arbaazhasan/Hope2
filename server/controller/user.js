@@ -157,14 +157,18 @@ export const follow = async (req, res) => {
 
 export const getFollowersList = async (req, res) => {
 
-    const userId = req.params.id;
-    const getUser = await User.findById(userId);
+    // const userId = req.params.id;
+    // const getUser = await User.findById(userId);
 
-    console.log(getUser);
+    // console.log(getUser);
 
 
-    const getFollowersList = getUser.followers;
-    const getFollowingList = getUser.following;
+    // const getFollowersList = getUser.followers;
+    // const getFollowingList = getUser.following;
+
+
+    const getFollowersList = req.user.followers;
+    const getFollowingList = req.user.following;
 
     let followersList = [];
     let followingList = [];
@@ -482,5 +486,77 @@ export const getUserProfileData = async (req, res) => {
         console.log(error.message);
 
     }
+
+};
+
+
+
+// Get Search User Followers and Following 
+
+
+export const getSearchUserFollowersList = async (req, res) => {
+
+    const userId = req.params.id;
+    const getUser = await User.findById(userId);
+
+    // console.log(getUser);
+
+
+    const getFollowersList = getUser.followers;
+    const getFollowingList = getUser.following;
+
+
+    let followersList = [];
+    let followingList = [];
+
+    await Promise.all(
+        getFollowersList.map(async (i) => {
+            // console.log(i);
+            const getUser = await User.findById(i);
+            if (!getUser) return console.log("User Not FOund");
+
+            const isFollow = await getFollowingList.includes(getUser._id);
+            // console.log(isFollow);
+
+            const followerListObject = {
+                _id: getUser._id,
+                name: getUser.name,
+                profilePicture: getUser.profilePicture ? getUser.profilePicture : "usericon.png",
+                isFollow: isFollow,
+            };
+
+            followersList.push(followerListObject);
+        })
+
+    );
+
+    // console.log(followersList);
+
+
+    await Promise.all(
+        getFollowingList.map(async (i) => {
+            // console.log(i);
+            const getUser = await User.findById(i);
+            if (!getUser) return console.log("User Not FOund");
+
+            const followingListObject = {
+                _id: getUser._id,
+                name: getUser.name,
+                profilePicture: getUser.profilePicture ? getUser.profilePicture : "usericon.png",
+                isFollow: true,
+            };
+            // console.log(followingListObject);
+
+            followingList.push(followingListObject);
+        })
+
+    );
+
+
+    res.status(200).json({
+        success: true,
+        followersList: followersList,
+        followingList: followingList
+    });
 
 };

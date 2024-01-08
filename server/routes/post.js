@@ -1,5 +1,5 @@
 import express from "express";
-import { comment, create, deletePost, getComments, getAllLikedPost, getAllSavedPosts, getAllUsersPosts, getMyPost, isLiked, likePost, savedPosts, updatePost, upload, isSaved } from "../controller/post.js";
+import { comment, create, deletePost, getComments, getAllLikedPost, getAllSavedPosts, getAllUsersPosts, getMyPost, isLiked, likePost, savedPosts, updatePost, upload, isSaved, getSearchUserPost } from "../controller/post.js";
 import { isAuthonticated } from "../middleware/auth.js";
 
 const router = express.Router();
@@ -18,6 +18,7 @@ router.get("/issaved/:id", isAuthonticated, isSaved);
 router.get("/getallusersposts", isAuthonticated, getAllUsersPosts);
 router.put("/comment/:id", isAuthonticated, comment);
 router.get("/getcomments/:id", isAuthonticated, getComments);
+router.get("/getsearchuserpost/:id", isAuthonticated, getSearchUserPost);
 
 
 
