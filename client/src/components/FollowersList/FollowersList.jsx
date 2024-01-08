@@ -45,7 +45,7 @@ const FollowersList = ({ userId }) => {
         });
 
         setReFreshData((pre) => !pre);
-        console.log(data);
+        // console.log(data);
 
     };
 
@@ -218,15 +218,6 @@ const FollowersList = ({ userId }) => {
                                         <div className="followerUsername">
                                             <Link to={"/userprofile"} onClick={() => { setUserProfileId(i._id); setReFreshData((pre) => !pre); }}>{i.name}</Link>
                                         </div>
-
-
-                                        <div className="followBtn" onClick={() => followAndUnfollowUser(i._id)}>
-                                            <span>{i.isFollow ? "Unfollow" : "Follow"}</span>
-                                        </div>
-
-
-
-
 
 
                                     </div>;

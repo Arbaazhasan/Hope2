@@ -2,18 +2,14 @@ import React, { useContext, useEffect, useState } from 'react';
 // import "./profile.css";
 import Bio from '../../components/Bio/Bio';
 import ProfileWindow from '../../components/ProfileWindow/ProfileWindow';
-import PostBar from "../../components/PostBar/PostBar";
 import PostWindow from "../../components/PostWindow/PostWindow";
 import FollowersList from '../../components/FollowersList/FollowersList';
 import Peoples from '../../components/Peoples/Peoples';
 import ProfileController from '../../components/ProfileController/ProfileController';
-import UpdateInfo from '../../components/UpdateInfo/UpdateInfo';
-import LikedPosts from '../../components/LikedPosts/LikedPosts';
 import { Context } from '../..';
 import { Navigate } from 'react-router';
 import axios from 'axios';
 import { server } from '../../App';
-import toast from 'react-hot-toast';
 
 
 const UserProfile = () => {
@@ -40,7 +36,6 @@ const UserProfile = () => {
         setPostAccouont,
         refreshData,
         userProfileId,
-        setRefreshData
     } = useContext(Context);
 
 

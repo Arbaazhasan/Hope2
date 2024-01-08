@@ -10,9 +10,7 @@ import { Navigate } from 'react-router';
 import { Link } from "react-router-dom";
 import axios from 'axios';
 import { server } from '../../App';
-import CommentBox from '../../components/commentBox/CommentBox';
 import Peoples from '../../components/Peoples/Peoples';
-import LikedPosts from '../../components/LikedPosts/LikedPosts';
 import PeopleWindow from '../../components/PeopleWindow/PeopleWindow.jsx';
 import AaccountSettings from '../../components/AccountSettings/AaccountSettings.jsx';
 import ExploreFollowers from '../../components/ExploreFollowers/ExploreFollowers.jsx';
@@ -21,28 +19,27 @@ import SearchUser from '../../components/SearchUser/SearchUser.jsx';
 
 const Home = () => {
     const { isAuthonticated,
-        user,
+
         userName, setUserName,
         userEmail, setUserEmail,
-        followers, setFollowers,
-        following, setFollowing,
-        bio, setBio,
-        status, setStatus,
-        lives, setLives,
-        work, setWork,
+        setFollowers,
+        setFollowing,
+        setBio,
+        setStatus,
+        setLives,
+        setWork,
         allUsersPosts, setAllUsersPosts,
         setPostAccouont,
         profilePhoto, setProfilePhoto,
-        newProfilePhoto, setNewProfilePhoto,
-        refreshData, setRefreshData,
-        savedPostWindow, setSavedPostWindow,
-        homePage, setHomePage,
-        savedPostsPage, setSavedPostsPage,
-        likedPosts, setLikedPosts,
-        accountSettings, setAccountSettings,
+        setNewProfilePhoto,
+        refreshData,
+        homePage,
+        savedPostsPage,
+        likedPosts,
+        accountSettings,
         explore,
-        followersList, setFollowersList,
-        followingList, setFollowingList,
+        followersList,
+        followingList,
         newFeed,
         searchUser
 
@@ -151,7 +148,7 @@ const Home = () => {
 
 
             } catch (error) {
-                console.log(error)
+                console.log(error);
 
             }
 
