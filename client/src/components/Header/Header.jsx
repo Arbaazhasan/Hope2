@@ -69,6 +69,7 @@ const Header = () => {
 
   };
 
+
   return (
     <div className='header'>
       <main>
@@ -76,7 +77,7 @@ const Header = () => {
         <div className="center">
           <form action="" onSubmit={searchData}>
             <AiOutlineSearch size={25} />
-            <input onClick={() => setVal("SearchUser")} onChange={(e) => { setSearchUserName(e.target.value); }} type="text" placeholder='Search for Creators, Inspiration and projects ' />
+            <input onClick={() => { setVal("SearchUser"); }} onChange={(e) => { setSearchUserName(e.target.value); }} type="text" placeholder='Search for Creators, Inspiration and projects ' />
           </form>
         </div>
         <div className="UserProfileIcon">

@@ -55,8 +55,10 @@
     /* border: 2px solid green; */
     padding: .5em .9em;
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     align-items: center;
+    gap: 12px;
+
 }
 
 .userFollowerTab:hover {
@@ -64,7 +66,6 @@
 }
 
 .followerUsername {
-
     /* border: 2px solid green; */
     width: 45%;
 }

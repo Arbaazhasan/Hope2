@@ -65,24 +65,22 @@ const Home = () => {
             // Fetching User Data From API
 
             try {
-                if (isAuthonticated) {
-                    axios.get(`${server}/user/me`,
-                        {
-                            withCredentials: true
-                        }).then((res) => {
-                            const { name, email, followers, following, bio, status, lives, work, profilePicture } = res.data.user;
-                            setUserName(name);
-                            setUserEmail(email);
-                            setFollowers(followers);
-                            setFollowing(following);
-                            setBio(bio);
-                            setStatus(status);
-                            setLives(lives);
-                            setWork(work);
-                            setProfilePhoto(profilePicture);
+                axios.get(`${server}/user/me`,
+                    {
+                        withCredentials: true
+                    }).then((res) => {
+                        const { name, email, followers, following, bio, status, lives, work, profilePicture } = res.data.user;
+                        setUserName(name);
+                        setUserEmail(email);
+                        setFollowers(followers);
+                        setFollowing(following);
+                        setBio(bio);
+                        setStatus(status);
+                        setLives(lives);
+                        setWork(work);
+                        setProfilePhoto(profilePicture);
 
-                        });
-                }
+                    });
 
             } catch (error) {
                 console.log(error);
@@ -93,24 +91,22 @@ const Home = () => {
             // Fetching All Users Posts from API
 
             try {
-                if (isAuthonticated) {
-                    axios.get(`${server}/post/getallusersposts`,
-                        {
-                            withCredentials: true,
-                        }).then((res) => {
-                            // console.log(res.data.allposts);
-                            setAllUsersPosts(res.data.allposts);
-                            setNewProfilePhoto(res.data.userProfileData);
+                axios.get(`${server}/post/getallusersposts`,
+                    {
+                        withCredentials: true,
+                    }).then((res) => {
+                        // console.log(res.data.allposts);
+                        setAllUsersPosts(res.data.allposts);
+                        setNewProfilePhoto(res.data.userProfileData);
 
 
-                            // console.log(res.data.userProfileData[0].profilePicture);
+                        // console.log(res.data.userProfileData[0].profilePicture);
 
 
-                        }).catch((e) => {
-                            console.log(e);
-                        });
-                    setPostAccouont(false);
-                }
+                    }).catch((e) => {
+                        console.log(e.message);
+                    });
+                setPostAccouont(false);
             } catch (error) {
                 console.log(error);
             }
@@ -155,6 +151,7 @@ const Home = () => {
 
 
             } catch (error) {
+                console.log(error)
 
             }
 
@@ -185,7 +182,7 @@ const Home = () => {
 
             // Fetching User Followers and Following 
 
-            axios.get(`${server}/user/getfollowerslist/${user._id}`,
+            axios.get(`${server}/user/getfollowerslist`,
                 {
                     headers: {
                         "Content-Type": "application/json"

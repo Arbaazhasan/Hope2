@@ -47,7 +47,7 @@ const UserProfile = () => {
     useEffect(() => {
 
         // Geting User Own Posts from API
-        axios.get(`${server}/post/getmyposts`,
+        axios.get(`${server}/post/getsearchuserpost/${userProfileId}`,
             {
                 withCredentials: true
             }).then((res) => {
@@ -63,9 +63,9 @@ const UserProfile = () => {
         setPostAccouont(true);
 
 
+
+
         // Getting User Profile Data
-
-
 
         const fetchData = async () => {
             try {

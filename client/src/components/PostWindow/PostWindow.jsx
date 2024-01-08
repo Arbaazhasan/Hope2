@@ -10,13 +10,14 @@ import toast from 'react-hot-toast';
 import { Context } from '../..';
 import CommentBox from "../commentBox/CommentBox";
 import { BsBookmarkFill } from 'react-icons/bs';
+import { Link } from 'react-router-dom';
 
 
 
 const PostWindow = ({ id, userName, profilePhoto, userId, desc, img, likes }) => {
 
     // console.log(likes);
-    const { postAccount, refreshData, setRefreshData, } = useContext(Context);
+    const { postAccount, refreshData, setRefreshData, setUserProfileId } = useContext(Context);
 
     // console.log(id, userName, userId, desc, likes);
 
@@ -186,7 +187,7 @@ const PostWindow = ({ id, userName, profilePhoto, userId, desc, img, likes }) =>
 
                 </div>
                 <div>
-                    <a href="#home">{userName}</a>
+                    <Link to={'/userprofile'} onClick={() => { setUserProfileId(userId); }}>{userName}</Link>
                     <p>Dubai, 15 Minutes Ago</p>
                 </div>
 

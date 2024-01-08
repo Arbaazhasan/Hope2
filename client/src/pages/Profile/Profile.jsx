@@ -93,7 +93,7 @@ const Profile = () => {
                 {/* <LikedPosts /> */}
             </div>
             <div className="profileRight">
-                <FollowersList userId={user._id} />
+                <FollowersList />
                 <Peoples />
             </div>
         </div>

@@ -24,6 +24,7 @@ function App() {
 
   useEffect(() => {
 
+
     axios.get(`${server}/user/me`, {
       withCredentials: true
     }).then((res) => {
