@@ -145,7 +145,7 @@ const UserProfile = () => {
                 {/* <LikedPosts /> */}
             </div>
             <div className="profileRight">
-                <FollowersList />
+                <FollowersList userId={userProfileId} />
                 <Peoples />
             </div>
         </div>

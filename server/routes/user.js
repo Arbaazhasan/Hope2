@@ -13,7 +13,7 @@ router.put("/follow/:id", isAuthonticated, follow);
 router.get("/me", isAuthonticated, getMyProfile);
 router.get("/logout", logout);
 router.put("/updateInfo", isAuthonticated, upload.single('profilePicture'), updateUserInfo);
-router.get("/getfollowerslist", isAuthonticated, getFollowersList);
+router.get("/getfollowerslist/:id", isAuthonticated, getFollowersList);
 router.get("/isfollowed/:id", isAuthonticated, isfollowed);
 router.get("/getallusers", isAuthonticated, getAllUsers);
 router.get("/getUserProfile/:username", isAuthonticated, getUserProfile);

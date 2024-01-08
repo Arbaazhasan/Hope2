@@ -21,6 +21,7 @@ import SearchUser from '../../components/SearchUser/SearchUser.jsx';
 
 const Home = () => {
     const { isAuthonticated,
+        user,
         userName, setUserName,
         userEmail, setUserEmail,
         followers, setFollowers,
@@ -184,7 +185,7 @@ const Home = () => {
 
             // Fetching User Followers and Following 
 
-            axios.get(`${server}/user/getfollowerslist`,
+            axios.get(`${server}/user/getfollowerslist/${user._id}`,
                 {
                     headers: {
                         "Content-Type": "application/json"

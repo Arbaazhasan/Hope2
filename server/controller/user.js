@@ -157,10 +157,14 @@ export const follow = async (req, res) => {
 
 export const getFollowersList = async (req, res) => {
 
+    const userId = req.params.id;
+    const getUser = await User.findById(userId);
+
+    console.log(getUser);
 
 
-    const getFollowersList = req.user.followers;
-    const getFollowingList = req.user.following;
+    const getFollowersList = getUser.followers;
+    const getFollowingList = getUser.following;
 
     let followersList = [];
     let followingList = [];

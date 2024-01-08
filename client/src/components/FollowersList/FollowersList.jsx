@@ -11,8 +11,10 @@ import { Link } from 'react-router-dom';
 
 // const [setRefreshData] = useContext(Context);
 
-const FollowersList = () => {
-
+const FollowersList = ({ userId }) => {
+    // console.log(userId);
+    const { user, isSearch, userProfileId } = useContext(Context);
+    // console.log(userId);
 
     const [userFollowers, setUserFollowers] = useState(true);
     const [userFollowing, setUserFollowing] = useState(false);
@@ -21,6 +23,11 @@ const FollowersList = () => {
     const [followingList, setFollwoingList] = useState([]);
 
     const [reFreshData, setReFreshData] = useState(false);
+
+    const [checkUrl, setCheckUrl] = useState(false);
+
+
+
 
     //Follow And UnFollow user  
 
@@ -41,10 +48,13 @@ const FollowersList = () => {
 
     useEffect(() => {
 
+        const path = window.location.pathname;
+        setCheckUrl(path);
 
-        // Getting Followers and Follwoing List of user
 
-        axios.get(`${server}/user/getfollowerslist`,
+        // Fetching User Follwoers and Following 
+
+        axios.get(`${server}/user/getfollowerslist/${userId}`,
             {
                 headers: {
                     "Content-Type": "application/json"
@@ -56,6 +66,7 @@ const FollowersList = () => {
             }).catch((error) => {
                 console.log(error);
             });
+
 
 
     }, [reFreshData]);
@@ -87,9 +98,16 @@ const FollowersList = () => {
                                     <Link to={"/"}>{i.name}</Link>
                                 </div>
 
-                                <div className="followBtn" onClick={() => followAndUnfollowUser(i._id)}>
-                                    <span>{i.isFollow ? "Unfollow" : "Follow"}</span>
-                                </div>
+                                {
+                                    checkUrl === "/profile" ? <div className="followBtn" onClick={() => followAndUnfollowUser(i._id)}>
+                                        <span>{i.isFollow ? "Unfollow" : "Follow"}</span>
+                                    </div> : " "
+                                }
+
+
+
+
+
                             </div>;
 
                         })

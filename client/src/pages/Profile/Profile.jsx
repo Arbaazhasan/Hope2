@@ -20,6 +20,7 @@ const Profile = () => {
 
 
     const { isAuthonticated, setIsAuthonticated,
+        user,
         userName,
         userEmail,
         followers,
@@ -33,6 +34,7 @@ const Profile = () => {
         profilePhoto,
         refreshData,
     } = useContext(Context);
+    // console.log(user)
 
 
     useEffect(() => {
@@ -91,7 +93,7 @@ const Profile = () => {
                 {/* <LikedPosts /> */}
             </div>
             <div className="profileRight">
-                <FollowersList />
+                <FollowersList userId={user._id} />
                 <Peoples />
             </div>
         </div>
