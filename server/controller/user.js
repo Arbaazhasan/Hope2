@@ -157,6 +157,8 @@ export const follow = async (req, res) => {
 
 export const getFollowersList = async (req, res) => {
 
+
+
     const getFollowersList = req.user.followers;
     const getFollowingList = req.user.following;
 
@@ -199,7 +201,7 @@ export const getFollowersList = async (req, res) => {
                 profilePicture: getUser.profilePicture ? getUser.profilePicture : "usericon.png",
                 isFollow: true,
             };
-            console.log(followingListObject);
+            // console.log(followingListObject);
 
             followingList.push(followingListObject);
         })
@@ -340,4 +342,141 @@ export const getAllUsers = async (req, res) => {
             message: error.message
         });
     }
+};
+
+
+
+
+// Search User Profile
+export const getUserProfile = async (req, res) => {
+
+    try {
+        const userName = req.params.username;
+
+        // const getUserProfile = await User.findOne({ email: userName });
+
+
+        // Create a case-insensitive regular expression pattern
+        const regexPattern = new RegExp(userName, 'i');
+
+        // Use the regex pattern in the query to find users
+        const getUsers = await User.find({ email: { $regex: regexPattern } });
+
+
+        if (getUsers.length == 0) return res.status(200).json({
+            succes: true,
+            userData: "User not Found",
+            isUser: false
+            // userPosts: "User not Found"
+        });
+
+        // const getUserPosts = await Post.find({ userId: getUserProfile._id });
+
+        res.status(200).json({
+            success: true,
+            userData: getUsers,
+            isUser: true
+            // userPosts: getUserPosts
+
+        });
+
+    } catch (error) {
+        res.status(400).json({
+            success: false,
+            message: error.message
+        });
+
+    }
+};
+
+
+
+// Get Follwoing User Posts 
+
+export const followingPost = async (req, res) => {
+    try {
+
+
+        const getFollowing = req.user.following;
+        const userPosts = [];
+
+        for (const userId of getFollowing) {
+            const getUserPosts = await Post.find({ userId });
+
+            for (const post of getUserPosts) {
+
+                const userProfilePhoto = await User.findById(post.userId);
+                // console.log(userProfilePhoto.profilePicture);
+                if (userProfilePhoto) {
+                    const postData = {
+                        _id: post._id,
+                        userId: post.userId,
+                        username: post.username,
+                        profilePicture: userProfilePhoto.profilePicture,
+                        desc: post.desc,
+                        img: post.img,
+                        likes: post.likes,
+                        comments: post.comment,
+                    };
+
+                    userPosts.push(postData);
+                } else {
+                    const postData = {
+                        _id: post._id,
+                        userId: post.userId,
+                        username: post.username,
+                        profilePicture: "usericon.png",
+                        desc: post.desc,
+                        img: post.img,
+                        likes: post.likes,
+                        comments: post.comment,
+                    };
+
+                    userPosts.push(postData);
+                }
+
+
+            }
+        }
+
+        res.status(200).json({
+            success: true,
+            userPosts: userPosts.reverse()
+        });
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            error: error.message
+        });
+    }
+};
+
+
+
+// Get User Profile Data
+
+export const getUserProfileData = async (req, res) => {
+
+    const userId = req.params.userid;
+
+    try {
+
+        const userProfile = await User.findById(userId);
+
+        if (!userProfile) return res.status(200).json({
+            success: false,
+            message: "User not Found !!!"
+        });
+
+        res.status(200).json({
+            success: true,
+            userProfile: userProfile
+        });
+    } catch (error) {
+
+        console.log(error.message);
+
+    }
+
 };
