@@ -5,8 +5,6 @@ import { User } from "../model/user.js";
 import multer from "multer";
 import express from "express";
 import path from "path"
-import fs from 'fs';
-
 
 // Create post
 
@@ -115,16 +113,8 @@ export const deletePost = async (req, res) => {
         message: "Action Forbidden !!!"
     });
 
+    
 
-      // Delete the file from the public directory
-      const filePath = `public/image/${post.img}`;
-      if (fs.existsSync(filePath)) {
-          fs.unlinkSync(filePath);
-      }
-
-
-
-      // Delete the post from the database
     await post.deleteOne({ userId: postId });
 
     res.status(200).json({

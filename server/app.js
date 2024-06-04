@@ -4,18 +4,10 @@ import userRouter from "./routes/user.js";
 import postRouter from "./routes/post.js";
 import { config } from "dotenv";
 import cors from "cors";
-import { dbConnection } from "./data/dbConnection.js";
 
 config({
     path: "./data/config.env"
 });
-
-
-
-// // database COnnectivity 
-dbConnection();
-
-
 
 // middleware
 const app = express();
@@ -24,7 +16,7 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.use(cors({
-    origin: process.env.CROS_ORIGIN,
+    origin: 'http://localhost:3000',
     credentials: true,
     methods: ["GET", "POST", "DELETE", "PUT"]
 }));
@@ -42,6 +34,6 @@ app.get("/", (req, res) => {
 
 
 // Server 
-app.listen(process.env.SERVER, () => {
+app.listen("4000", () => {
     console.log("Server woriking ");
 });

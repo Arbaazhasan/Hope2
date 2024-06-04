@@ -1,6 +1,13 @@
 import mongoose from "mongoose";
 
 
+// database COnnectivity 
+mongoose.connect("mongodb://127.0.0.1:27017/", { dbName: "fullStackApp" }).then(() => {
+    console.log("Database COnnected");
+}).catch((e) => {
+    console.log(e);
+});
+
 const appSchema = new mongoose.Schema({
     name: {
         type: String,
